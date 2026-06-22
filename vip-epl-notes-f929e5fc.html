@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>vip-epl.com · 英超直播 · 故事与陪伴</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+      background: #f4f8fb;
+      color: #1e2a34;
+      line-height: 1.7;
+      padding: 0 1.2rem;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .page {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 2.2rem 0 3rem;
+      flex: 1;
+    }
+
+    /* hero 开场短句 */
+    .hero {
+      text-align: left;
+      padding: 2rem 0 0.5rem;
+    }
+
+    .hero h1 {
+      font-size: 2rem;
+      font-weight: 450;
+      letter-spacing: 0.02em;
+      color: #164a5f;
+    }
+
+    .hero .brief {
+      margin-top: 0.8rem;
+      font-size: 1.1rem;
+      color: #2b5f72;
+      border-left: 4px solid #3da6c4;
+      padding-left: 1.1rem;
+      background: #e3f0f5;
+      border-radius: 0 8px 8px 0;
+      line-height: 1.8;
+      max-width: 640px;
+    }
+
+    /* 承接段落 温和叙述 */
+    .intro {
+      margin: 2.5rem 0 1.8rem;
+      background: white;
+      border-radius: 24px;
+      padding: 1.8rem 2rem;
+      box-shadow: 0 6px 20px rgba(38, 110, 130, 0.06);
+    }
+
+    .intro p {
+      margin-bottom: 1.2rem;
+      font-size: 1rem;
+      color: #213a44;
+    }
+
+    .intro p:last-child {
+      margin-bottom: 0;
+    }
+
+    .intro .highlight {
+      background: linear-gradient(120deg, #d7eef5 0%, #d7eef5 40%, transparent 90%);
+      padding: 0 0.3rem;
+      font-weight: 450;
+    }
+
+    .intro a {
+      color: #1b7c98;
+      text-decoration: none;
+      border-bottom: 1px dashed #8ec7d9;
+      transition: border-color 0.2s;
+    }
+
+    .intro a:hover {
+      border-bottom: 1px solid #1b7c98;
+    }
+
+    /* 特点列表 · 网格卡片 */
+    .features-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.4rem;
+      margin: 2.8rem 0;
+    }
+
+    .feature-card {
+      background: white;
+      border-radius: 20px;
+      padding: 1.5rem 1.4rem;
+      box-shadow: 0 4px 14px rgba(50, 120, 140, 0.04);
+      transition: transform 0.15s, box-shadow 0.2s;
+      border: 1px solid #e4f0f5;
+      position: relative;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px rgba(43, 110, 130, 0.08);
+      border-color: #b7dae8;
+    }
+
+    .feature-card .icon {
+      font-size: 1.6rem;
+      line-height: 1;
+      display: block;
+      margin-bottom: 0.5rem;
+      color: #2e7d98;
+    }
+
+    .feature-card h3 {
+      font-size: 1.1rem;
+      font-weight: 520;
+      color: #174c60;
+      margin-bottom: 0.4rem;
+      letter-spacing: 0.01em;
+    }
+
+    .feature-card p {
+      font-size: 0.95rem;
+      color: #2f5262;
+      line-height: 1.6;
+    }
+
+    .feature-card .tag {
+      display: inline-block;
+      background: #d6eef7;
+      color: #14657d;
+      font-size: 0.7rem;
+      font-weight: 500;
+      padding: 0.1rem 0.7rem;
+      border-radius: 30px;
+      margin-top: 0.5rem;
+      letter-spacing: 0.3px;
+    }
+
+    /* 场景 / 温和提示区块 */
+    .scene-note {
+      background: #f0f7fa;
+      border-radius: 28px;
+      padding: 1.8rem 2rem;
+      margin: 2rem 0;
+      border-left: 5px solid #3da6c4;
+    }
+
+    .scene-note p {
+      font-size: 1rem;
+      color: #1e4b5a;
+      margin-bottom: 0.8rem;
+    }
+
+    .scene-note p:last-child {
+      margin-bottom: 0;
+    }
+
+    .scene-note .subtle-link {
+      color: #1b7c98;
+      text-decoration: none;
+      font-weight: 470;
+      border-bottom: 1px dotted #7cb8ce;
+    }
+
+    .scene-note .subtle-link:hover {
+      border-bottom: 1px solid #14647d;
+    }
+
+    /* FAQ 摘要 *极简* */
+    .faq-mini {
+      margin: 2.8rem 0 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+
+    .faq-item {
+      background: white;
+      padding: 1rem 1.5rem;
+      border-radius: 40px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+      border: 1px solid #deedf3;
+      font-size: 0.95rem;
+    }
+
+    .faq-item .q {
+      font-weight: 520;
+      color: #1d5a6e;
+      display: block;
+      margin-bottom: 0.2rem;
+    }
+
+    .faq-item .a {
+      color: #2d5b6b;
+      display: block;
+      padding-left: 0.3rem;
+    }
+
+    .faq-item .a a {
+      color: #1b7c98;
+      text-decoration: underline dotted rgba(27,124,152,0.4);
+    }
+
+    /* 温和结尾 */
+    .gentle-closing {
+      margin: 3.8rem 0 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #d3e4ec;
+      text-align: left;
+    }
+
+    .gentle-closing p {
+      font-size: 1rem;
+      color: #295e70;
+      max-width: 580px;
+    }
+
+    .gentle-closing .word-mark {
+      display: inline-block;
+      background: #d6eaf2;
+      color: #125a72;
+      padding: 0.1rem 1rem;
+      border-radius: 30px;
+      font-size: 0.8rem;
+      margin-top: 0.4rem;
+    }
+
+    /* 响应式 */
+    @media (max-width: 600px) {
+      body {
+        padding: 0 0.9rem;
+      }
+      .page {
+        padding: 1.6rem 0 2.5rem;
+      }
+      .hero h1 {
+        font-size: 1.6rem;
+      }
+      .hero .brief {
+        font-size: 1rem;
+        padding-left: 0.9rem;
+      }
+      .intro {
+        padding: 1.4rem 1.2rem;
+        border-radius: 20px;
+      }
+      .features-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+      .feature-card {
+        padding: 1.2rem 1.2rem;
+      }
+      .scene-note {
+        padding: 1.4rem 1.2rem;
+      }
+      .faq-item {
+        padding: 0.8rem 1rem;
+        border-radius: 28px;
+      }
+    }
+
+    @media (min-width: 768px) {
+      .features-grid {
+        gap: 1.6rem;
+      }
+    }
+
+    footer {
+      text-align: left;
+      font-size: 0.8rem;
+      color: #6792a2;
+      padding: 1rem 0 1.2rem;
+      border-top: 1px solid #d7e5ec;
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <!-- hero: 开场短句 -->
+    <div class="hero">
+      <h1>在屏幕与球场之间</h1>
+      <div class="brief">
+        有些陪伴不需要太多装饰 —— 一场直播，一个夜晚，就够了。
+      </div>
+    </div>
+
+    <!-- 承接段落 · 从站点介绍与可信说明展开 -->
+    <div class="intro">
+      <p>
+        <span class="highlight">vip-epl.com</span> 不是一个热闹的门户，它更像一位老友，为喜欢英超的你保留着一条安静的通道。在这里，<a href="https://vip-epl.com">英超直播</a> 被放在最朴素的位置 —— 没有闪烁的弹窗，也没有过度的渲染，只是让比赛本身成为焦点。
+      </p>
+      <p>
+        几年下来，我们习惯了用最轻量的方式提供信号指引：稳定、直接、不打扰。很多访客是在某个周六的深夜第一次点开链接，此后便默默收藏了它。这种信任并不是因为什么承诺，而是因为每一次点击，都通往真实的画面。
+      </p>
+      <p>
+        从服务器到带宽，从链接维护到界面刷新，每一步都刻意保持克制。我们不标榜“全网最快”，也不渲染“独家渠道”，只保证一件事：当你打开页面时，<a href="https://vip-epl.com">英超直播</a> 就在那里，安静地等你。
+      </p>
+    </div>
+
+    <!-- 特点列表 · 网格卡片 · 蓝绿色点缀 -->
+    <div class="features-grid">
+      <div class="feature-card">
+        <span class="icon">⋆</span>
+        <h3>无冗余结构</h3>
+        <p>页面只保留导航与直播入口，没有广告堆叠和诱导模块。你找的是比赛，不是迷宫。</p>
+        <span class="tag">纯净</span>
+      </div>
+      <div class="feature-card">
+        <span class="icon">◈</span>
+        <h3>多源自适应</h3>
+        <p>每轮比赛提供若干备用信号，链路自动切换。就算某个源临时波动，替补随即跟上。</p>
+        <span class="tag">稳定</span>
+      </div>
+      <div class="feature-card">
+        <span class="icon">⌂</span>
+        <h3>轻设备友好</h3>
+        <p>无论是六年前的老手机还是最新的平板，页面都保持同样的流畅与清晰。移动端优先。</p>
+        <span class="tag">响应</span>
+      </div>
+      <div class="feature-card">
+        <span class="icon">◌</span>
+        <h3>零收藏负担</h3>
+        <p>没有强制注册，没有关注要求。把链接加入书签，下次比赛日直接打开就好。就这么简单。</p>
+        <span class="tag">自在</span>
+      </div>
+    </div>
+
+    <!-- 场景 · 温和叙述 -->
+    <div class="scene-note">
+      <p>有时你只是想在下班后，一个人或两三个朋友，安安静静看一场利物浦的夜场，或者阿森纳的早场。不需要解说员亢奋的嘶吼，也不需要满屏的聊天弹幕。</p>
+      <p>我们也这样想。所以 <a href="https://vip-epl.com" class="subtle-link">英超直播</a> 一直保持那种“背景般”的存在 —— 不抢眼，但可靠。你只需要打开它，然后让足球说话。</p>
+    </div>
+
+    <!-- FAQ 摘要 → 简单问答，依然自然 -->
+    <div class="faq-mini">
+      <div class="faq-item">
+        <span class="q">⚡ 直播需要安装软件或插件吗？</span>
+        <span class="a">不需要。所有信号基于网页，现代浏览器打开即看。部分源可能提示允许弹出窗口，允许即可。</span>
+      </div>
+      <div class="faq-item">
+        <span class="q">📡 如果链接打不开或卡顿怎么办？</span>
+        <span class="a">页面通常准备了多个备用线路，可尝试切换。另外检查网络环境，或换个时段再试。实在不行，可以隔几分钟刷新一下页面。</span>
+      </div>
+      <div class="faq-item">
+        <span class="q">🔒 这个网站安全吗？会不会有恶意广告？</span>
+        <span class="a">我们尽力维护链接的清洁，不挂载弹窗广告和恶意跳转。但作为用户，也建议保持浏览器与安全软件处于更新状态，这是通用的好习惯。</span>
+      </div>
+    </div>
+
+    <!-- 温和结尾 -->
+    <div class="gentle-closing">
+      <p>无论你因为哪一场比赛来到 <a href="https://vip-epl.com">英超直播</a>，希望它都能成为你看球记忆里一点点微小的背景色。不喧哗，不打扰，只是如约亮起。</p>
+      <span class="word-mark">从某个周六的深夜开始</span>
+    </div>
+
+    <footer>
+      <span>vip-epl.com · 以安静的方式存在</span>
+    </footer>
+  </div>
+</body>
+</html>
