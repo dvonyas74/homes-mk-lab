@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>看懂英超直播 – 产品说明</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: linear-gradient(145deg, #fde9e0 0%, #fad6c6 40%, #fcccb4 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1.2rem;
+            line-height: 1.6;
+            color: #3b2d26;
+        }
+
+        .card-wrapper {
+            max-width: 820px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: #fffffffa;
+            backdrop-filter: blur(2px);
+            border-radius: 2.8rem 1.2rem 2.8rem 1.2rem;
+            box-shadow: 0 18px 40px -12px rgba(140, 70, 40, 0.28), 0 6px 12px rgba(0,0,0,0.03);
+            padding: 2.8rem 2.4rem;
+            transition: all 0.2s ease;
+        }
+
+        @media (max-width: 560px) {
+            body { padding: 1.2rem 0.8rem; }
+            .card { padding: 1.8rem 1.2rem; border-radius: 2.2rem 0.8rem 2.2rem 0.8rem; }
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 550;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.2rem;
+            color: #3a281f;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            flex-wrap: wrap;
+        }
+
+        h1 small {
+            font-size: 1rem;
+            font-weight: 380;
+            color: #8a6b5a;
+            background: #f3e4db;
+            padding: 0.2rem 0.8rem;
+            border-radius: 30px;
+            letter-spacing: 0.3px;
+        }
+
+        .subhead {
+            font-size: 1.05rem;
+            color: #6a5346;
+            border-left: 4px solid #dbb09b;
+            padding-left: 1rem;
+            margin: 1rem 0 2rem 0;
+        }
+
+        .summary {
+            background: #faf2ec;
+            padding: 1rem 1.4rem;
+            border-radius: 30px 12px 30px 12px;
+            margin-bottom: 2rem;
+            font-size: 0.98rem;
+        }
+
+        .badge-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem 0.8rem;
+            margin: 1.6rem 0 2rem 0;
+        }
+
+        .badge-list span {
+            background: #f3dfd4;
+            padding: 0.2rem 1rem;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            font-weight: 470;
+            color: #4c362b;
+        }
+
+        h2 {
+            font-size: 1.25rem;
+            font-weight: 520;
+            margin: 1.8rem 0 0.6rem 0;
+            color: #3d2b20;
+            border-bottom: 2px dotted #ddc2b2;
+            padding-bottom: 0.2rem;
+            display: inline-block;
+        }
+
+        .grid-points {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem 1.6rem;
+            margin: 1rem 0 1.6rem 0;
+        }
+
+        @media (max-width: 520px) {
+            .grid-points { grid-template-columns: 1fr; }
+        }
+
+        .point-item {
+            background: #fcf6f1;
+            padding: 0.8rem 1rem 0.8rem 1rem;
+            border-radius: 20px 6px 20px 6px;
+        }
+
+        .point-item strong {
+            display: block;
+            font-weight: 540;
+            color: #4b3022;
+            margin-bottom: 0.1rem;
+        }
+
+        .point-item p {
+            font-size: 0.92rem;
+            color: #5a4236;
+            margin: 0;
+        }
+
+        .use-scenario {
+            background: #f6eae2;
+            padding: 0.8rem 1.2rem;
+            border-radius: 30px 8px 30px 8px;
+            margin: 1.6rem 0;
+            font-size: 0.95rem;
+        }
+
+        .faq-snip {
+            background: #fff6f0;
+            padding: 1rem 1.4rem;
+            border-radius: 16px;
+            margin: 1.8rem 0 1.2rem 0;
+            border: 1px solid #eedace;
+        }
+
+        .faq-snip details {
+            margin: 0.4rem 0;
+        }
+
+        .faq-snip summary {
+            font-weight: 500;
+            cursor: pointer;
+            color: #3e2b1f;
+            padding: 0.2rem 0;
+        }
+
+        .faq-snip details p {
+            font-size: 0.9rem;
+            color: #534134;
+            margin: 0.2rem 0 0.6rem 0;
+            padding-left: 0.6rem;
+            border-left: 3px solid #dba48a;
+        }
+
+        .link-sentence {
+            background: #f4e3d9;
+            padding: 0.8rem 1.4rem;
+            border-radius: 60px 12px 60px 12px;
+            display: inline-block;
+            margin: 0.8rem 0 0.2rem 0;
+            font-size: 0.98rem;
+        }
+
+        a {
+            color: #b55b35;
+            text-decoration: none;
+            font-weight: 520;
+            padding: 0.1rem 0.2rem;
+            border-radius: 30px;
+            transition: background 0.15s, color 0.15s;
+        }
+
+        a:hover {
+            background: #b55b3518;
+            color: #8d4426;
+            text-decoration: underline 1.5px #c47756;
+            text-underline-offset: 3px;
+        }
+
+        .foot-note {
+            margin-top: 2.2rem;
+            font-size: 0.82rem;
+            color: #7b6456;
+            border-top: 1px solid #e5d3c7;
+            padding-top: 1rem;
+            text-align: left;
+            opacity: 0.85;
+        }
+
+        .foot-note a {
+            font-weight: 400;
+            color: #7b6456;
+        }
+
+        .foot-note a:hover {
+            color: #4f3628;
+        }
+
+        .tiny-meta {
+            display: block;
+            margin-top: 0.6rem;
+            font-size: 0.7rem;
+            letter-spacing: 0.3px;
+            color: #9c887a;
+        }
+    </style>
+</head>
+<body>
+<div class="card-wrapper">
+    <div class="card">
+        <h1>
+            ｜英超直播
+            <small>快速识别 · 直接导向</small>
+        </h1>
+        <div class="subhead">
+            如果你想快速了解某个网站是否提供英超相关内容，这个页面就是一份整理后的产品式说明。
+        </div>
+
+        <div class="summary">
+            <strong>摘要</strong> — 这是一个围绕 <a href="https://portal-epl.com">英超直播</a> 话题设计的索引页。
+            其核心用途是帮助用户从名称和定位上快速判断：该网站是否与英超联赛的直播信息、赛程或相关服务有关。
+            页面本身不模拟直播内容，只做清晰的用途说明。
+        </div>
+
+        <div class="badge-list">
+            <span>⚽ 联赛指向</span>
+            <span>📺 直播相关</span>
+            <span>🧭 用途识别</span>
+            <span>📋 信息整理</span>
+        </div>
+
+        <h2>▍ 亮点速览</h2>
+        <div class="grid-points">
+            <div class="point-item">
+                <strong>一目了然的命名</strong>
+                <p>域名与页面标题直接包含“英超直播”，消除猜测成本，适合书签或快速跳转。</p>
+            </div>
+            <div class="point-item">
+                <strong>轻量说明页</strong>
+                <p>不堆砌复杂功能，专注解释“这是什么、适合谁、如何使用”，减少信息噪音。</p>
+            </div>
+            <div class="point-item">
+                <strong>克制的引导</strong>
+                <p>链接自然嵌在说明中，不强制点击，适合先阅读后判断的使用习惯。</p>
+            </div>
+            <div class="point-item">
+                <strong>场景化建议</strong>
+                <p>针对不同需求给出简要使用思路，而非笼统宣传。</p>
+            </div>
+        </div>
+
+        <h2>▍ 适用场景建议</h2>
+        <div class="use-scenario">
+            • 如果你正在寻找与英超直播相关的站点，可以将此页作为判断起点：先看介绍，再决定是否前往 <a href="https://portal-epl.com">英超直播</a>。<br>
+            • 如果你想收藏一个名称明确的英超直播书签，该页面可作为稳定入口参考。<br>
+            • 若你只是路过并想确认网站主题，摘要和亮点可直接给出答案，无需深入浏览。
+        </div>
+
+        <h2>▍ 常见疑问（FAQ 摘要）</h2>
+        <div class="faq-snip">
+            <details>
+                <summary>这个页面本身能看直播吗？</summary>
+                <p>不能。本页是介绍与说明页，主要用于展示网站主题和用途。直播内容需要通过 <a href="https://portal-epl.com">英超直播</a> 站点本身获取。</p>
+            </details>
+            <details>
+                <summary>为什么需要这样一个说明页？</summary>
+                <p>很多用户打开一个链接后，需要花时间猜网站是干什么的。这个页面直接告诉你：它指向的是英超直播相关内容，省去反复确认的麻烦。</p>
+            </details>
+            <details>
+                <summary>链接安全吗？</summary>
+                <p>页面内所有链接均指向 https://portal-epl.com ，你可以根据自身判断决定是否访问。本页不做任何诱导或承诺。</p>
+            </details>
+        </div>
+
+        <div class="link-sentence">
+            📌 如果你想直接了解该站提供的服务，可前往 <a href="https://portal-epl.com">英超直播</a> 查看更多信息。
+        </div>
+
+        <div class="foot-note">
+            <div>本说明页仅用于用途介绍与导航辅助，不包含直播源、播放器或任何违规内容。请根据个人需求合理使用。</div>
+            <span class="tiny-meta">产品说明式索引 · 内容方向：用途识别</span>
+        </div>
+    </div>
+</div>
+</body>
+</html>
